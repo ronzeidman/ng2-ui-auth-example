@@ -1,0 +1,60 @@
+{
+  "name": "ng2-ui-auth-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ronzeidman/ng2-ui-auth-example.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ronzeidman/ng2-ui-auth-example/issues"
+  },
+  "homepage": "https://github.com/ronzeidman/ng2-ui-auth-example#readme",
+  "devDependencies": {
+    "angular2": "^2.0.0-beta.6",
+    "jspm": "^0.16.29",
+    "ng2-ui-auth": "^1.0.15",
+    "rxjs": "^5.0.0-beta.2",
+    "typescript": "^1.8.0",
+    "typings": "^0.6.8",
+    "zone.js": "^0.5.14"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "client"
+    },
+    "dependencies": {
+      "angular2": "npm:angular2@^2.0.0-beta.6",
+      "es6-promise": "npm:es6-promise@^3.1.2",
+      "es6-shim": "github:es-shims/es6-shim@^0.34.4",
+      "ng2-ui-auth": "npm:ng2-ui-auth@^1.0.15",
+      "reflect-metadata": "npm:reflect-metadata@0.1.2",
+      "rxjs": "npm:rxjs@5.0.0-beta.0",
+      "zone.js": "npm:zone.js@^0.5.14"
+    },
+    "devDependencies": {}
+  },
+  "dependencies": {
+    "bcrypt": "^0.8.5",
+    "bcryptjs": "^2.3.0",
+    "bluebird": "^3.3.1",
+    "body-parser": "^1.15.0",
+    "compression": "^1.6.1",
+    "cors": "^2.7.1",
+    "errorhandler": "^1.4.3",
+    "express": "^4.13.4",
+    "express-jwt": "^3.3.0",
+    "jsonwebtoken": "^5.7.0",
+    "lodash": "^4.4.0",
+    "longjohn": "^0.2.11",
+    "morgan": "^1.6.1",
+    "request-promise": "^2.0.0",
+    "rethinkdbdash": "^2.2.17"
+  }
+}
