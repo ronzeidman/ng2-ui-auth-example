@@ -17,9 +17,9 @@
   },
   "homepage": "https://github.com/ronzeidman/ng2-ui-auth-example#readme",
   "devDependencies": {
-    "angular2": "^2.0.0-beta.6",
+    "angular2": "^2.0.0-beta.7",
     "jspm": "^0.16.29",
-    "ng2-ui-auth": "^1.0.15",
+    "ng2-ui-auth": "^1.1.0",
     "rxjs": "^5.0.0-beta.2",
     "typescript": "^1.8.0",
     "typings": "^0.6.8",
@@ -30,12 +30,12 @@
       "baseURL": "client"
     },
     "dependencies": {
-      "angular2": "npm:angular2@^2.0.0-beta.6",
+      "angular2": "npm:angular2@^2.0.0-beta.7",
       "es6-promise": "npm:es6-promise@^3.1.2",
       "es6-shim": "github:es-shims/es6-shim@^0.34.4",
-      "ng2-ui-auth": "npm:ng2-ui-auth@^1.0.15",
+      "ng2-ui-auth": "npm:ng2-ui-auth@^1.1.0",
       "reflect-metadata": "npm:reflect-metadata@0.1.2",
-      "rxjs": "npm:rxjs@5.0.0-beta.0",
+      "rxjs": "npm:rxjs@5.0.0-beta.2",
       "zone.js": "npm:zone.js@^0.5.14"
     },
     "devDependencies": {}

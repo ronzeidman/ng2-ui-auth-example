@@ -1,9 +1,8 @@
-import {Component, provide} from 'angular2/core';
+import {Component} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES, Router} from 'angular2/router';
-import {Auth, JwtHttp, Config} from 'ng2-ui-auth';
-import {Shared} from 'ng2-ui-auth/src/shared';
+import {Auth, JwtHttp, Config, JWT_HTTP_PROVIDER} from 'ng2-ui-auth';
 import {Observable} from 'rxjs/Observable';
-import {RequestOptions, XHRBackend, Http} from 'angular2/http';
+import {Http} from 'angular2/http';
 /**
  * Created by ronze on 2/17/2016.
  */
@@ -42,11 +41,7 @@ class Overview {
 @Component({
     selector: 'app-main',
     template: '<router-outlet></router-outlet>',
-    providers: [provide(JwtHttp, {
-        useFactory: (xhrBackend, requestOptions, shared, config, router) =>
-            new JwtHttp(xhrBackend, requestOptions, shared, config),
-        deps: [XHRBackend, RequestOptions, Shared, Config],
-    })],
+    providers: [JWT_HTTP_PROVIDER],
     directives: [ROUTER_DIRECTIVES]
 })
 @RouteConfig([
