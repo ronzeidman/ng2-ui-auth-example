@@ -11,7 +11,7 @@ System.config({
     "angular2": "npm:angular2@2.0.0-beta.7",
     "es6-promise": "npm:es6-promise@3.1.2",
     "es6-shim": "github:es-shims/es6-shim@0.34.4",
-    "ng2-ui-auth": "npm:ng2-ui-auth@1.1.0",
+    "ng2-ui-auth": "npm:ng2-ui-auth@2.0.0",
     "reflect-metadata": "npm:reflect-metadata@0.1.2",
     "rxjs": "npm:rxjs@5.0.0-beta.2",
     "zone.js": "npm:zone.js@0.5.15",
@@ -215,7 +215,7 @@ System.config({
       "bn.js": "npm:bn.js@4.10.3",
       "brorand": "npm:brorand@1.0.5"
     },
-    "npm:ng2-ui-auth@1.1.0": {
+    "npm:ng2-ui-auth@2.0.0": {
       "angular2": "npm:angular2@2.0.0-beta.7",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "process": "github:jspm/nodelibs-process@0.1.2"

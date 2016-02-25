@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compileClient": "tsc -p ./client",
+    "compileServer": "tsc -p ./server"
   },
   "repository": {
     "type": "git",
@@ -19,11 +21,11 @@
   "devDependencies": {
     "angular2": "^2.0.0-beta.7",
     "jspm": "^0.16.29",
-    "ng2-ui-auth": "^1.1.0",
+    "ng2-ui-auth": "^2.0.0",
     "rxjs": "^5.0.0-beta.2",
     "typescript": "^1.8.0",
     "typings": "^0.6.8",
-    "zone.js": "^0.5.14"
+    "zone.js": "^0.5.15"
   },
   "jspm": {
     "directories": {
@@ -33,10 +35,10 @@
       "angular2": "npm:angular2@^2.0.0-beta.7",
       "es6-promise": "npm:es6-promise@^3.1.2",
       "es6-shim": "github:es-shims/es6-shim@^0.34.4",
-      "ng2-ui-auth": "npm:ng2-ui-auth@^1.1.0",
+      "ng2-ui-auth": "npm:ng2-ui-auth@^2.0.0",
       "reflect-metadata": "npm:reflect-metadata@0.1.2",
       "rxjs": "npm:rxjs@5.0.0-beta.2",
-      "zone.js": "npm:zone.js@^0.5.14"
+      "zone.js": "npm:zone.js@^0.5.15"
     },
     "devDependencies": {}
   },

@@ -8,12 +8,16 @@
     "cors": "github:DefinitelyTyped/DefinitelyTyped/cors/cors.d.ts#ee872c633411d2524cafc68d339f016acbfa1fd6",
     "errorhandler": "github:DefinitelyTyped/DefinitelyTyped/errorhandler/errorhandler.d.ts#7e47928c4d7717a576243c4ac4a2c0f66d80b07e",
     "express": "github:DefinitelyTyped/DefinitelyTyped/express/express.d.ts#dd638012d63e069f2c99d06ef4dcc9616a943ee4",
+    "express-jwt": "github:DefinitelyTyped/DefinitelyTyped/express-jwt/express-jwt.d.ts#2cb8fd4638231efd24929f99d56372bdb57d337b",
+    "express-unless": "github:DefinitelyTyped/DefinitelyTyped/express-unless/express-unless.d.ts#b80f7caacfe2430b9e34d7fba1d262205c233ce9",
     "form-data": "github:DefinitelyTyped/DefinitelyTyped/form-data/form-data.d.ts#bb1b99052bf1d697f0368fbff56898bc1f5a525c",
     "jsonwebtoken": "github:DefinitelyTyped/DefinitelyTyped/jsonwebtoken/jsonwebtoken.d.ts#8d9e2d7993a2ac7d38427bd08bee641251f2dfd4",
     "lodash": "github:DefinitelyTyped/DefinitelyTyped/lodash/lodash.d.ts#c8630523ef2ee3fb42fe65cc17af5b1b56e611bc",
+    "mime": "github:DefinitelyTyped/DefinitelyTyped/mime/mime.d.ts#cb5206a8ac1c9a3ddfd126f5ecea6729b2361452",
     "morgan": "github:DefinitelyTyped/DefinitelyTyped/morgan/morgan.d.ts#4566a913a3667dc627851d0f7f38ffcd0e7cf6ea",
     "node": "github:DefinitelyTyped/DefinitelyTyped/node/node.d.ts#aee0039a2d6686ec78352125010ebb38a7a7d743",
     "request": "github:DefinitelyTyped/DefinitelyTyped/request/request.d.ts#90c7b5653c973cbc8c568ba33c8a04fb478525ee",
-    "request-promise": "github:DefinitelyTyped/DefinitelyTyped/request-promise/request-promise.d.ts#14cc56099a4c90926839e406a87d36596d093708"
+    "request-promise": "github:DefinitelyTyped/DefinitelyTyped/request-promise/request-promise.d.ts#14cc56099a4c90926839e406a87d36596d093708",
+    "serve-static": "github:DefinitelyTyped/DefinitelyTyped/serve-static/serve-static.d.ts#0fa4e9e61385646ea6a4cba2aef357353d2ce77f"
   }
 }

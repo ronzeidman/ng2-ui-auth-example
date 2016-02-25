@@ -1,6 +1,6 @@
 import {Component} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES, Router} from 'angular2/router';
-import {Auth, JwtHttp, Config, JWT_HTTP_PROVIDER} from 'ng2-ui-auth';
+import {Auth, JwtHttp, Config} from 'ng2-ui-auth';
 import {Observable} from 'rxjs/Observable';
 import {Http} from 'angular2/http';
 /**
@@ -41,7 +41,6 @@ class Overview {
 @Component({
     selector: 'app-main',
     template: '<router-outlet></router-outlet>',
-    providers: [JWT_HTTP_PROVIDER],
     directives: [ROUTER_DIRECTIVES]
 })
 @RouteConfig([

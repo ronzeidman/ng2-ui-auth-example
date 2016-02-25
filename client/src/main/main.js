@@ -68,7 +68,6 @@ System.register(['angular2/core', 'angular2/router', 'ng2-ui-auth', 'angular2/ht
                     core_1.Component({
                         selector: 'app-main',
                         template: '<router-outlet></router-outlet>',
-                        providers: [ng2_ui_auth_1.JWT_HTTP_PROVIDER],
                         directives: [router_1.ROUTER_DIRECTIVES]
                     }),
                     router_1.RouteConfig([
