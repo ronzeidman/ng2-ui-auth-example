@@ -1,0 +1,24 @@
+<ion-navbar *navbar hideBackButton>
+  <ion-title>Travessey</ion-title>
+</ion-navbar>
+
+<ion-content padding class="login-page">
+
+  <form [ngFormModel]="loginForm" (ngSubmit)="login(loginForm.value)">
+    <ion-list inset>
+      <ion-item [ngClass]="{'has-error': email.hasError('validateEmail') && email.dirty}" >
+        <ion-input type="text" placeholder="Email" ngControl="email" ></ion-input>
+      </ion-item>
+      <div *ngIf="email.hasError('validateEmail') && email.dirty" class="error-box">* Please enter a valid email</div>
+
+      <ion-item>
+        <ion-input type="password" placeholder="Password" ngControl="password"></ion-input>
+      </ion-item>
+      <div *ngIf="password.hasError('required') && password.dirty" class="error-box">* Password required</div>
+    </ion-list>
+    <button block type="submit" [disabled]="!loginForm.valid">Login</button>
+  </form>
+  <button block (click)="authenticate('facebook')">Facebook</button>
+  <button block (click)="authenticate('google')">Google+</button>
+  <button clear center (click)="signup()">Dont have an account?</button>
+</ion-content>
