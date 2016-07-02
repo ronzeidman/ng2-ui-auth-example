@@ -1,0 +1,32 @@
+<ion-content class="signup-page">
+  <form class="signup-form" [ngFormModel]="signupForm" (ngSubmit)="signup($event)">
+    <ion-list inset>
+      <ion-item>
+        <ion-input type="text" placeholder="First name" ngControl="firstName"></ion-input>
+      </ion-item>
+      <div *ngIf="!firstName.valid && firstName.dirty" class="error-box">* Frist name is required!
+      </div>
+
+      <ion-item>
+        <ion-input type="text" placeholder="Last name" ngControl="lastName"></ion-input>
+      </ion-item>
+      <div *ngIf="!lastName.valid && lastName.dirty" class="error-box">* Last name is required!
+      </div>
+
+      <ion-item>
+        <ion-input type="text" placeholder="Email" ngControl="email"></ion-input>
+      </ion-item>
+      <div *ngIf="!email.valid && email.dirty" class="error-box">* Email is required!
+      </div>
+
+      <ion-item>
+        <ion-input type="password" placeholder="Password" ngControl="password"></ion-input>
+      </ion-item>
+      <div *ngIf="!password.valid && password.dirty" class="error-box">* Password is required!
+      </div>
+
+    </ion-list>
+
+    <button block type="submit" [disabled]="!signupForm.valid">Done</button>
+  </form>
+</ion-content>
