@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges} from 'angular2/core';
+import {Component, Input, OnChanges} from '@angular/core';
 
 /**
  * Created by Ron on 19/12/2015.
@@ -8,11 +8,11 @@ import {Component, Input, OnChanges} from 'angular2/core';
     selector: 'ng-messages',
     template:
     '<p *ngIf="error" [ngSwitch]="error" class="text-danger help-block">' +
-    '<template ngSwitchWhen="required">Required</template>' +
-    '<template ngSwitchWhen="email">Invalid email address</template>' +
-    '<template ngSwitchWhen="minlength">Too short</template>' +
-    '<template ngSwitchWhen="maxlength">Too long</template>' +
-    '<template ngSwitchWhen="passwordMatch">Passwords don&apos;t match</template>' +
+    '<template ngSwitchCase="required">Required</template>' +
+    '<template ngSwitchCase="email">Invalid email address</template>' +
+    '<template ngSwitchCase="minlength">Too short</template>' +
+    '<template ngSwitchCase="maxlength">Too long</template>' +
+    '<template ngSwitchCase="passwordMatch">Passwords don&apos;t match</template>' +
     '<template ngSwitchDefault>Validation error</template>' +
     '</p>'
 })

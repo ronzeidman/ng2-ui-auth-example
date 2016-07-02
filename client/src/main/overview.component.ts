@@ -1,18 +1,17 @@
-import {Component} from 'angular2/core';
-import {RouteConfig, ROUTER_DIRECTIVES, Router} from 'angular2/router';
-import {Auth, JwtHttp, Config} from 'ng2-ui-auth';
-import {Observable} from 'rxjs/Observable';
-import {Http} from 'angular2/http';
+import {ROUTER_DIRECTIVES, Router} from '@angular/router';
+import {Component} from '@angular/core';
+import {Observable} from 'rxjs/Rx';
+import {Auth, JwtHttp} from 'ng2-ui-auth';
+import {Http} from '@angular/http';
 /**
- * Created by ronze on 2/17/2016.
+ * Created by Ron on 02/07/2016.
  */
-
 @Component({
     selector: 'app-overview',
     template: '<p>{{helloWorld | async}}</p><p>{{helloWorldError}}</p><button type="button" (click)="signout()">signout</button> ',
     directives: [ROUTER_DIRECTIVES]
 })
-class Overview {
+export class OverviewComponent {
     helloWorld: Observable<string>;
     helloWorldError: string = 'sdf';
 
@@ -33,18 +32,7 @@ class Overview {
 
     signout() {
         this.auth.logout().subscribe(() => {
-            this.router.navigate(['/Login']);
+            this.router.navigate(['/login']);
         })
     }
-}
-
-@Component({
-    selector: 'app-main',
-    template: '<router-outlet></router-outlet>',
-    directives: [ROUTER_DIRECTIVES]
-})
-@RouteConfig([
-    {path: 'overview', name: 'Overview', component: Overview, useAsDefault: true},
-])
-export class Main {
 }

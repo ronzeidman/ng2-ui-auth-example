@@ -2,9 +2,14 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "noImplicitAny": true,
     "sourceMap": true,
     "moduleResolution": "node"
   },
-  "exclude": ["typings"]
+  "files": [
+    "typings/index",
+    "local_typings/bcryptjsAsync",
+    "local_typings/rethinkdb",
+    "local_typings/rethinkdbdash",
+    "src/server"
+  ]
 }

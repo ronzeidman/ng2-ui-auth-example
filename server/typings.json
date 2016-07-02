@@ -1,23 +1,27 @@
 {
-  "ambientDependencies": {
-    "bcrypt": "github:DefinitelyTyped/DefinitelyTyped/bcrypt/bcrypt.d.ts#30f566d3c9569cbfa6a97da863bdfa58853ca29a",
-    "bcryptjs": "github:DefinitelyTyped/DefinitelyTyped/bcryptjs/bcryptjs.d.ts#230dcd425bd9e818df6cdc1ff9f29d5368123031",
-    "bluebird": "github:DefinitelyTyped/DefinitelyTyped/bluebird/bluebird.d.ts#dd328830dddffbe19e9addd7cf8532cbd3600816",
-    "body-parser": "github:DefinitelyTyped/DefinitelyTyped/body-parser/body-parser.d.ts#9a2c50ea846ee6ae36feaea0accc77ae7b08a748",
-    "compression": "github:DefinitelyTyped/DefinitelyTyped/compression/compression.d.ts#9dbba87a0de04697b26391557f48acfff113b7ce",
-    "cors": "github:DefinitelyTyped/DefinitelyTyped/cors/cors.d.ts#ee872c633411d2524cafc68d339f016acbfa1fd6",
-    "errorhandler": "github:DefinitelyTyped/DefinitelyTyped/errorhandler/errorhandler.d.ts#7e47928c4d7717a576243c4ac4a2c0f66d80b07e",
-    "express": "github:DefinitelyTyped/DefinitelyTyped/express/express.d.ts#dd638012d63e069f2c99d06ef4dcc9616a943ee4",
-    "express-jwt": "github:DefinitelyTyped/DefinitelyTyped/express-jwt/express-jwt.d.ts#2cb8fd4638231efd24929f99d56372bdb57d337b",
-    "express-unless": "github:DefinitelyTyped/DefinitelyTyped/express-unless/express-unless.d.ts#b80f7caacfe2430b9e34d7fba1d262205c233ce9",
-    "form-data": "github:DefinitelyTyped/DefinitelyTyped/form-data/form-data.d.ts#bb1b99052bf1d697f0368fbff56898bc1f5a525c",
-    "jsonwebtoken": "github:DefinitelyTyped/DefinitelyTyped/jsonwebtoken/jsonwebtoken.d.ts#8d9e2d7993a2ac7d38427bd08bee641251f2dfd4",
-    "lodash": "github:DefinitelyTyped/DefinitelyTyped/lodash/lodash.d.ts#c8630523ef2ee3fb42fe65cc17af5b1b56e611bc",
-    "mime": "github:DefinitelyTyped/DefinitelyTyped/mime/mime.d.ts#cb5206a8ac1c9a3ddfd126f5ecea6729b2361452",
-    "morgan": "github:DefinitelyTyped/DefinitelyTyped/morgan/morgan.d.ts#4566a913a3667dc627851d0f7f38ffcd0e7cf6ea",
-    "node": "github:DefinitelyTyped/DefinitelyTyped/node/node.d.ts#aee0039a2d6686ec78352125010ebb38a7a7d743",
-    "request": "github:DefinitelyTyped/DefinitelyTyped/request/request.d.ts#90c7b5653c973cbc8c568ba33c8a04fb478525ee",
-    "request-promise": "github:DefinitelyTyped/DefinitelyTyped/request-promise/request-promise.d.ts#14cc56099a4c90926839e406a87d36596d093708",
-    "serve-static": "github:DefinitelyTyped/DefinitelyTyped/serve-static/serve-static.d.ts#0fa4e9e61385646ea6a4cba2aef357353d2ce77f"
+  "globalDependencies": {
+    "bcrypt": "registry:dt/bcrypt#0.0.0+20160316155526",
+    "bcryptjs": "registry:dt/bcryptjs#2.3.0+20151217030501",
+    "body-parser": "registry:dt/body-parser#0.0.0+20160619023215",
+    "compression": "registry:dt/compression#0.0.0+20160501162003",
+    "cors": "registry:dt/cors#0.0.0+20160317120654",
+    "errorhandler": "registry:dt/errorhandler#0.0.0+20160316155526",
+    "es6-shim": "registry:dt/es6-shim#0.31.2+20160602141504",
+    "express": "registry:dt/express#4.0.0+20160317120654",
+    "express-jwt": "registry:dt/express-jwt#0.0.0+20160319033732",
+    "express-serve-static-core": "registry:dt/express-serve-static-core#0.0.0+20160701212727",
+    "express-unless": "registry:dt/express-unless#0.0.0+20160317120654",
+    "form-data": "registry:dt/form-data#0.0.0+20160316155526",
+    "jsonwebtoken": "registry:dt/jsonwebtoken#0.0.0+20160627133958",
+    "lodash": "registry:dt/lodash#3.10.0+20160619033623",
+    "mime": "registry:dt/mime#0.0.0+20160316155526",
+    "morgan": "registry:dt/morgan#1.7.0+20160524142355",
+    "node": "registry:dt/node#6.0.0+20160621231320",
+    "request": "registry:dt/request#0.0.0+20160524135346",
+    "request-promise": "registry:dt/request-promise#3.0.0+20160628092802",
+    "serve-static": "registry:dt/serve-static#0.0.0+20160606155157"
+  },
+  "dependencies": {
+    "bluebird": "registry:npm/bluebird#3.3.4+20160622205516"
   }
 }

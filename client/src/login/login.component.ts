@@ -1,9 +1,9 @@
-import {Component, AfterContentInit, ElementRef, Renderer, OnInit} from 'angular2/core';
-import {FormBuilder, ControlGroup, Control, Validators} from 'angular2/common';
-import {Router, ROUTER_DIRECTIVES} from 'angular2/router';
 import {Auth} from 'ng2-ui-auth';
 import {NgMessages} from '../formComponents/ngMessages';
 import {EmailValidator} from '../formComponents/customValidators';
+import {ROUTER_DIRECTIVES, Router} from '@angular/router';
+import {Component, Renderer, AfterContentInit, OnInit, ElementRef} from '@angular/core';
+import {Validators, FormBuilder, FormControl, FormGroup, REACTIVE_FORM_DIRECTIVES} from '@angular/forms';
 
 /**
  * Created by Ron on 18/12/2015.
@@ -11,15 +11,14 @@ import {EmailValidator} from '../formComponents/customValidators';
 
 @Component({
     selector: 'app-login',
-    templateUrl: './src/login/login.html',
-    directives: [NgMessages, ROUTER_DIRECTIVES, EmailValidator],
+    templateUrl: './src/login/login.component.html',
+    directives: [NgMessages, ROUTER_DIRECTIVES, REACTIVE_FORM_DIRECTIVES, EmailValidator],
 })
-export class Login implements AfterContentInit, OnInit {
-    user = {email: '', password: ''};
-    form: ControlGroup;
+export class LoginComponent implements AfterContentInit, OnInit {
+    form: FormGroup;
 
     login() {
-        this.auth.login(this.user)
+        this.auth.login(this.form.value)
             .subscribe(() => this.goToMain());
     }
 
@@ -29,7 +28,7 @@ export class Login implements AfterContentInit, OnInit {
     }
 
     goToMain() {
-        this.router.navigate(['Main']);
+        this.router.navigate(['/main']);
     }
 
     ngAfterContentInit() {
@@ -41,8 +40,8 @@ export class Login implements AfterContentInit, OnInit {
 
     ngOnInit() {
         this.form = this.fb.group({
-            email: new Control('', Validators.compose([Validators.required, EmailValidator.validate])),
-            password: new Control('', Validators.required)
+            email: new FormControl('', Validators.compose([Validators.required, EmailValidator.validate])),
+            password: new FormControl('', Validators.required)
         });
     }
 

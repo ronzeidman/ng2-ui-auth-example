@@ -1,5 +1,6 @@
 /* tslint:disable */
 declare module "rethinkdb" {
+    import * as Promise from 'bluebird';
     interface RRunnable<T> {
         run(cb: (err: Error, result: T|T[]) => void, options?: RunOptions): void;
         run(options?: RunOptions): Promise<T|T[]>;

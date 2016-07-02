@@ -1,5 +1,6 @@
-System.register(['angular2/core', 'angular2/router', 'ng2-ui-auth', 'angular2/http'], function(exports_1) {
+System.register(['@angular/router', '@angular/core', 'ng2-ui-auth', '@angular/http'], function(exports_1, context_1) {
     "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9,15 +10,15 @@ System.register(['angular2/core', 'angular2/router', 'ng2-ui-auth', 'angular2/ht
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, ng2_ui_auth_1, http_1;
-    var Overview, Main;
+    var router_1, core_1, ng2_ui_auth_1, http_1;
+    var OverviewComponent;
     return {
         setters:[
-            function (core_1_1) {
-                core_1 = core_1_1;
-            },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (core_1_1) {
+                core_1 = core_1_1;
             },
             function (ng2_ui_auth_1_1) {
                 ng2_ui_auth_1 = ng2_ui_auth_1_1;
@@ -27,10 +28,10 @@ System.register(['angular2/core', 'angular2/router', 'ng2-ui-auth', 'angular2/ht
             }],
         execute: function() {
             /**
-             * Created by ronze on 2/17/2016.
+             * Created by Ron on 02/07/2016.
              */
-            Overview = (function () {
-                function Overview(auth, router, jwtHttp, http) {
+            OverviewComponent = (function () {
+                function OverviewComponent(auth, router, jwtHttp, http) {
                     var _this = this;
                     this.auth = auth;
                     this.router = router;
@@ -45,40 +46,24 @@ System.register(['angular2/core', 'angular2/router', 'ng2-ui-auth', 'angular2/ht
                         _this.helloWorldError = response.text();
                     });
                 }
-                Overview.prototype.signout = function () {
+                OverviewComponent.prototype.signout = function () {
                     var _this = this;
                     this.auth.logout().subscribe(function () {
-                        _this.router.navigate(['/Login']);
+                        _this.router.navigate(['/login']);
                     });
                 };
-                Overview = __decorate([
+                OverviewComponent = __decorate([
                     core_1.Component({
                         selector: 'app-overview',
                         template: '<p>{{helloWorld | async}}</p><p>{{helloWorldError}}</p><button type="button" (click)="signout()">signout</button> ',
                         directives: [router_1.ROUTER_DIRECTIVES]
                     }), 
                     __metadata('design:paramtypes', [ng2_ui_auth_1.Auth, router_1.Router, ng2_ui_auth_1.JwtHttp, http_1.Http])
-                ], Overview);
-                return Overview;
+                ], OverviewComponent);
+                return OverviewComponent;
             }());
-            Main = (function () {
-                function Main() {
-                }
-                Main = __decorate([
-                    core_1.Component({
-                        selector: 'app-main',
-                        template: '<router-outlet></router-outlet>',
-                        directives: [router_1.ROUTER_DIRECTIVES]
-                    }),
-                    router_1.RouteConfig([
-                        { path: 'overview', name: 'Overview', component: Overview, useAsDefault: true },
-                    ]), 
-                    __metadata('design:paramtypes', [])
-                ], Main);
-                return Main;
-            }());
-            exports_1("Main", Main);
+            exports_1("OverviewComponent", OverviewComponent);
         }
     }
 });
-//# sourceMappingURL=main.js.map
+//# sourceMappingURL=overview.component.js.map

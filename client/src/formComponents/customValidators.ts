@@ -1,12 +1,6 @@
-import {
-    Directive,
-} from 'angular2/core';
 
-import {
-    Control,
-    Validator, ControlGroup,
-} from 'angular2/common';
-
+import {Directive} from '@angular/core';
+import {Validator, FormControl, FormGroup} from '@angular/forms';
 /**
  * Created by Ron on 19/12/2015.
  */
@@ -15,7 +9,7 @@ import {
     selector: '[dEmail]'
 })
 export class EmailValidator implements Validator {
-    static validate(control: Control): {[key: string]: boolean} {
+    static validate(control: FormControl): {[key: string]: boolean} {
         let re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
         if (control.value === '' || re.test(control.value)) {
             return null;
@@ -23,7 +17,7 @@ export class EmailValidator implements Validator {
         return {email: true};
     }
 
-    validate(control: Control): {[key: string]: boolean} {
+    validate(control: FormControl): {[key: string]: boolean} {
         return EmailValidator.validate(control);
     }
 }
@@ -32,7 +26,7 @@ export class EmailValidator implements Validator {
     selector: '[dPasswordMatch]'
 })
 export class PasswordMatchValidator {
-    static validate(control: ControlGroup) {
+    static validate(control: FormGroup) {
         let firstValue;
         if (Object.keys(control.controls).every((key) => {
                 if (firstValue === undefined) {

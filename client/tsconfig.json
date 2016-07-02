@@ -9,10 +9,8 @@
     "removeComments": false,
     "noImplicitAny": false
   },
-  "exclude": [
-    "jspm_packages",
-    "node_modules",
-    "typings/main",
-    "typings/main.d.ts"
+  "files": [
+    "typings/index.d.ts",
+    "src/bootstrap"
   ]
 }
