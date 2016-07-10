@@ -144,8 +144,8 @@ function google(req, res) {
             }
         }
         else {
-            tokenInfo.userId = writeResults.userId;
-            tokenInfo.displayName = writeResults.displayName;
+            tokenInfo.userId = writeResults[0].userId;
+            tokenInfo.displayName = writeResults[0].displayName;
         }
         sendToken(res, tokenInfo);
     })

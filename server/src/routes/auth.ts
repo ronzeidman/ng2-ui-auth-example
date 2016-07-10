@@ -185,7 +185,7 @@ export function google(req: Request, res: Response) {
             }
         })
         .then(throwIfWriteError(false, true))
-        .then((writeResults: WriteResult<any>|IUser) => {
+        .then((writeResults: WriteResult<any>|IUser[]) => {
             let tokenInfo: ITokenInfo = <any>{};
             if (isWriteResult(writeResults)) {
                 if (req.user) { //3a. Link user account
@@ -195,8 +195,8 @@ export function google(req: Request, res: Response) {
                     tokenInfo.displayName = profile.name;
                 }
             } else { //3c. return an existing user account.
-                tokenInfo.userId = writeResults.userId;
-                tokenInfo.displayName = writeResults.displayName;
+                tokenInfo.userId = writeResults[0].userId;
+                tokenInfo.displayName = writeResults[0].displayName;
             }
             sendToken(res, tokenInfo);
         })
