@@ -20,3 +20,12 @@ to start the ionic client first start the server and then:
 2) npm run ionic2
 3) choose address and it will open the browser for you
 ```
+
+Notice!
+The expected result after login is two lines that look as follows:
+```
+~~~ Hello <user name if a google login / email if manual> ~~~
+
+Unauthorized
+```
+The fist line shows the usage of jwtHttp in order to retrieve the data and the second line shows that a plain http call fails
