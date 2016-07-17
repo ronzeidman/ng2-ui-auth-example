@@ -35,7 +35,12 @@ System.register(['zone.js/dist/zone.js', 'reflect-metadata', './top.component', 
                 forms_1.provideForms(),
                 bootstrap_routes_1.CLIENT_ROUTER_PROVIDERS,
                 http_1.HTTP_PROVIDERS,
-                ng2_ui_auth_1.NG2_UI_AUTH_PROVIDERS({ providers: { google: { clientId: GOOGLE_CLIENT_ID } } }),
+                ng2_ui_auth_1.NG2_UI_AUTH_PROVIDERS({ providers: {
+                        google: { clientId: GOOGLE_CLIENT_ID },
+                        twitter: {
+                            authorizationEndpoint: 'https://api.twitter.com/oauth/authorize' //you don't need to override if you don't want 3 legged authentication
+                        }
+                    } }),
             ]);
         }
     }

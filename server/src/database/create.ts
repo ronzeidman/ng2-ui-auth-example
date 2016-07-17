@@ -59,4 +59,5 @@ export function create(connectionOptions: ConnectionOptions = config.rethinkdb) 
         .then(addTable('user', {primaryKey: 'userId'}))
         .then(addIndex('email'))
         .then(addIndex('google'))
+        .then(addIndex('twitter'))
 }

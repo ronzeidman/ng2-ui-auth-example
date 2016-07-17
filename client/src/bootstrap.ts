@@ -16,5 +16,10 @@ bootstrap(TopComponent, [
     provideForms(),
     CLIENT_ROUTER_PROVIDERS,
     HTTP_PROVIDERS,
-    NG2_UI_AUTH_PROVIDERS({providers: {google: {clientId: GOOGLE_CLIENT_ID}}}),
+    NG2_UI_AUTH_PROVIDERS({providers: {
+        google: {clientId: GOOGLE_CLIENT_ID},
+        twitter: {
+            authorizationEndpoint: 'https://api.twitter.com/oauth/authorize' //you don't need to override if you don't want 3 legged authentication
+        }
+    }}),
 ]);

@@ -13,6 +13,9 @@ exports.config = {
     SALT_ROUNDS: 10,
     TOKEN_SECRET: 'MyTokenSecret',
     // OAuth 2.0
-    GOOGLE_SECRET: 'MyGoogleSecret',
+    GOOGLE_SECRET: 'CHANGE_ME',
+    // 3 legged auth
+    TWITTER_API_KEY: 'CHANGE_ME',
+    TWITTER_SECRET: 'CHANGE_ME'
 };
 //# sourceMappingURL=config.js.map

@@ -48,7 +48,8 @@ function create(connectionOptions) {
         .then(ifNotExistCreate("Database '" + connectionOptions.db + "'", r.dbCreate(connectionOptions.db)))
         .then(addTable('user', { primaryKey: 'userId' }))
         .then(addIndex('email'))
-        .then(addIndex('google'));
+        .then(addIndex('google'))
+        .then(addIndex('twitter'));
 }
 exports.create = create;
 //# sourceMappingURL=create.js.map

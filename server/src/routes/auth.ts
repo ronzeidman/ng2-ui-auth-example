@@ -16,6 +16,7 @@ import * as bcryptSync from 'bcryptjs';
 import * as _ from 'lodash';
 import * as Promise from 'bluebird';
 import * as rp from 'request-promise';
+import * as qs from 'querystring';
 import {userTbl, IUser} from '../database/tables';
 import {RStream} from "rethinkdb";
 const bcrypt = <bcryptjsAsync>Promise.promisifyAll(bcryptSync);
@@ -37,7 +38,8 @@ export interface ISignup {
 export const authRoutes = Express.Router()
     .post('/login', login)
     .post('/signup', signup)
-    .post('/google', google);
+    .post('/google', google)
+    .post('/twitter', twitter);
 
 function encrypt(password: string): Promise<string> {
     return bcrypt.genSaltAsync(config.SALT_ROUNDS)
@@ -158,7 +160,7 @@ export function google(req: Request, res: Response) {
             }
             // Step 3a. Link user account.
             if (req.user) {
-                const companyUpdater = (row: RStream<IUser>) => {
+                const userUpdater = (row: RStream<IUser>) => {
                     return {
                         google: profile.sub,
                         picture: row('picture').default(profile.picture.replace('sz=50', 'sz=200')),
@@ -167,7 +169,7 @@ export function google(req: Request, res: Response) {
                 };
                 return r.branch(
                     userTbl().getAll(profile.sub, {index: 'google'}).isEmpty(),
-                    userTbl().get(req.user.companyId).update(companyUpdater),
+                    userTbl().get(req.user.usreId).update(userUpdater, {returnChanges: true}),
                     new DBNotFoundError()
                 ).run();
             } else {
@@ -179,26 +181,125 @@ export function google(req: Request, res: Response) {
                         email: profile.email,
                         google: profile.sub,
                         picture: profile.picture.replace('sz=50', 'sz=200')
-                    }), //3b. Create a new user account
+                    }, {returnChanges: true}), //3b. Create a new user account
                     userTbl().getAll(profile.sub, {index: 'google'}) //3c. return an existing user account.
                 ).run();
             }
         })
         .then(throwIfWriteError(false, true))
-        .then((writeResults: WriteResult<any>|IUser[]) => {
-            let tokenInfo: ITokenInfo = <any>{};
-            if (isWriteResult(writeResults)) {
-                if (req.user) { //3a. Link user account
-                    tokenInfo = req.user;
-                } else { //3b. Create a new user account
-                    tokenInfo.userId = writeResults.generated_keys[0];
-                    tokenInfo.displayName = profile.name;
-                }
-            } else { //3c. return an existing user account.
-                tokenInfo.userId = writeResults[0].userId;
-                tokenInfo.displayName = writeResults[0].displayName;
-            }
-            sendToken(res, tokenInfo);
-        })
+        .then(handleAuthenticationComplete(req, res))
         .catch(handleExceptions(res));
+}
+
+interface ITwitterProfile {
+    id: string;
+    name: string;
+    profile_image_url: string;
+}
+export function twitter(req: Request, res: Response) { // 3 legged auth example
+    var requestTokenUrl = 'https://api.twitter.com/oauth/request_token';
+    var accessTokenUrl = 'https://api.twitter.com/oauth/access_token';
+    var profileUrl = 'https://api.twitter.com/1.1/users/show.json?screen_name=';
+
+    // Part 1 of 2: Initial request from Satellizer.
+    if (!req.body.oauth_token || !req.body.oauth_verifier) {
+        const requestTokenOauth = {
+            consumer_key: config.TWITTER_API_KEY,
+            consumer_secret: config.TWITTER_SECRET,
+            callback: req.body.redirectUri
+        };
+
+        // Step 1. Obtain request token for the authorization popup.
+        rp.post({ url: requestTokenUrl, oauth: requestTokenOauth, json: true })
+            .then((body: string) => {
+                // Step 2. Send OAuth token back to open the authorization screen.
+                res.send({ oauth_token: qs.parse(body).oauth_token });
+            })
+            .catch(handleExceptions(res));
+    } else {
+        // Part 2 of 2: Second request after Authorize app is clicked.
+        const accessTokenOauth = {
+            consumer_key: config.TWITTER_API_KEY,
+            consumer_secret: config.TWITTER_SECRET,
+            token: req.body.oauth_token,
+            verifier: req.body.oauth_verifier
+        };
+        let oauth_token_secret: string;
+
+        // Step 3. Exchange oauth token and oauth verifier for access token.
+        rp.post({ url: accessTokenUrl, oauth: accessTokenOauth })
+            .then((body: string) => {
+                const parsed: {
+                    oauth_token: string,
+                    oauth_token_secret: string,
+                    screen_name: string,
+                    user_id: string
+                } = qs.parse(body);
+
+                const profileOauth = {
+                    consumer_key: config.TWITTER_API_KEY,
+                    consumer_secret: config.TWITTER_SECRET,
+                    oauth_token: parsed.oauth_token
+                };
+
+                oauth_token_secret = parsed.oauth_token_secret;
+                // Step 4. Retrieve profile information about the current user.
+                return rp.get({
+                    url: profileUrl + parsed.screen_name,
+                    oauth: profileOauth,
+                    json: true
+                });
+            })
+            .then((profile: ITwitterProfile) => {
+                // Step 5a. Link user accounts.
+                if (req.user) {
+                    const userUpdater = (row: RStream<IUser>) => {
+                        return {
+                            twitter: profile.id,
+                            picture: row('picture').default(profile.profile_image_url.replace('_normal', '')),
+                            displayName: row('displayName').default(profile.name),
+                        }
+                    };
+                    return r.branch(
+                        userTbl().getAll(profile.id, {index: 'twitter'}).isEmpty(),
+                        userTbl().get(req.user.userId).update(userUpdater, {returnChanges: true}),
+                        new DBNotFoundError()
+                    ).run();
+                } else {
+                    // Step 5b. Create a new user account or 5c. return an existing one.
+                    return r.branch(
+                        userTbl().getAll(profile.id, {index: 'twitter'}).isEmpty(),
+                        userTbl().insert({
+                            displayName: profile.name,
+                            twitter: profile.id,
+                            picture: profile.profile_image_url.replace('_normal', '')
+                        }, {returnChanges: true}), //5b. Create a new user account
+                        userTbl().getAll(profile.id, {index: 'twitter'}) //5c. return an existing user account.
+                    ).run();
+                }
+            })
+            .then(throwIfWriteError(false, true))
+            .then(handleAuthenticationComplete(req, res))
+            .catch(handleExceptions(res));
+        }
+}
+
+function handleAuthenticationComplete(req: Request, res: Response) {
+    return (writeResultsOrUsers: WriteResult<any>|IUser[]) => {
+        let tokenInfo: ITokenInfo = <any>{};
+        if (isWriteResult(writeResultsOrUsers)) {
+            const writeResults: WriteResult<any> = writeResultsOrUsers;
+            if (req.user) { //Link user account
+                tokenInfo = req.user;
+            } else { //Create a new user account
+                tokenInfo.userId = writeResults.generated_keys[0];
+                tokenInfo.displayName = writeResults.changes[0].new_val.displayName;
+            }
+        } else { //return an existing user account.
+            const users: IUser[] = writeResultsOrUsers;
+            tokenInfo.userId = users[0].userId;
+            tokenInfo.displayName = users[0].displayName;
+        }
+        sendToken(res, tokenInfo);
+    }
 }
