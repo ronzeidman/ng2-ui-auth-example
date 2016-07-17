@@ -35,7 +35,7 @@ SystemJS.config({
     "@angular/platform-browser": "npm:@angular/platform-browser@2.0.0-rc.4",
     "@angular/platform-browser-dynamic": "npm:@angular/platform-browser-dynamic@2.0.0-rc.4",
     "@angular/router": "npm:@angular/router@3.0.0-beta.2",
-    "ng2-ui-auth": "npm:ng2-ui-auth@3.1.2",
+    "ng2-ui-auth": "npm:ng2-ui-auth@3.2.2",
     "process": "github:jspm/nodelibs-process@0.2.0-alpha",
     "reflect-metadata": "npm:reflect-metadata@0.1.3",
     "rxjs": "npm:rxjs@5.0.0-beta.6",
