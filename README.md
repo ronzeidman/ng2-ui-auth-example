@@ -2,7 +2,7 @@
 To run first install rethinkdb on your localhost (http://rethinkdb.com/docs/install/)
 if you're on windows it's just an exe file you need to run (no system files changes, no messy installer/uninstaller).
 
-To create a google client id & secret you need to login to console.developers.google.com go to "credentials" create a new "OAuth Client ID" -> "Web Application" -> authorize your domain or "http://localhost:port" (if you use ionc2 the ionic port too) and then you get a "Client secret" for the server-side and a "Client ID" for the UI side.
+To create a google client id & secret you need to login to console.developers.google.com go to "credentials" create a new "OAuth Client ID" -> "Web Application" -> authorize your domain or "http://localhost:port" (if you use ionic2 the ionic port too) and then you get a "Client secret" for the server-side and a "Client ID" for the UI side.
 
 to start the server
 ```
