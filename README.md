@@ -10,7 +10,7 @@ to start the server
 ```
 to start the browser client first start the server and then:
 ```
-1) modify client/src/top.ts to include your google client id
+1) modify client/src/bootstrap.ts to include your google client id
 2) npm run client
 3) start your browser in localhost:3000
 ```
