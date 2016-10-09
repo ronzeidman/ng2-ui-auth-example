@@ -19,5 +19,5 @@
     "target": "es5",
     "outDir": "dist/"
   },
-  "files": ["src/bootstrap"]
+  "files": ["src/bootstrap.aot"]
 }

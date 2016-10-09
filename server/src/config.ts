@@ -1,17 +1,12 @@
 /**
- * Created by ronze on 2/3/2016.
+ * Created by Ron on 02/10/2016.
  */
 export const config = {
-    rethinkdb: {
-        host: 'localhost',
-        port: 28015,
-        authKey: '',
-        db: 'test',
-    },
-    // Token Authentication
-    SALT_ROUNDS: 10,
-    TOKEN_SECRET: 'MyTokenSecret',
+    auth: {
+        SALT_ROUNDS: 10,
+        TOKEN_SECRET: 'MyTokenSecret',
 
-    // OAuth 2.0
-    GOOGLE_SECRET: 'MyGoogleSecret',
+        // OAuth 2.0
+        GOOGLE_SECRET: '<replace me>'
+    }
 };

@@ -1,15 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es5",
     "module": "commonjs",
+    "target": "es2015",
     "sourceMap": true,
-    "moduleResolution": "node"
+    "outDir": "dist",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "strictNullChecks": true
   },
-  "files": [
-    "typings/index",
-    "local_typings/bcryptjsAsync",
-    "local_typings/rethinkdb",
-    "local_typings/rethinkdbdash",
-    "src/server"
-  ]
+  "files": ["src/server"]
 }

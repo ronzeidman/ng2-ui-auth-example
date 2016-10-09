@@ -1,22 +1,13 @@
 # ng2-ui-auth-example
-To run first install rethinkdb on your localhost (http://rethinkdb.com/docs/install/)
-if you're on windows it's just an exe file you need to run (no system files changes, no messy installer/uninstaller).
 
-to start the server
+to start just checkout and
 ```
-1) modify server/src/config.ts to include your google secret
-2) run rethinkdb database
-3) npm run server
+1) replace '<replace me>' tags from /server/src/config.ts and /client/src/config.ts with your google secret and client id 
+1) npm run full:dev
+2) start your browser at localhost:3000
 ```
-to start the browser client first start the server and then:
-```
-1) modify client/src/top.ts to include your google client id
-2) npm run client
-3) start your browser in localhost:3000
-```
-to start the ionic client first start the server and then:
-```
-1) modify ionic2/app/config.ts tp include your client id
-2) npm run ionic2
-3) choose address and it will open the browser for you
-```
+
+Look at the source to understand more about the inner working of everything, if something is not clear feel free to add an issue and I'll specifically document it.
+
+
+ionic2 is not updated yet, you can look at it for reference but it uses an old version of angular, ionic and ng2-ui-auth.
