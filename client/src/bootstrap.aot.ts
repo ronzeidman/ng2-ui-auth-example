@@ -1,3 +1,5 @@
+///<reference path="environment.d.ts"/>
+
 import './styles';
 import './polyfills';
 import {enableProdMode} from '@angular/core';
