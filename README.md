@@ -18,3 +18,8 @@ ionic2:
 ```
 
 You can login with username: 'test' password: 'testtest' (it is hardcoded in the server)
+
+Few dependencies that may require more attention:
+1) node-gyp https://github.com/nodejs/node-gyp (this is for the bcrypt library for hashing passwords in the server)
+2) for ionic2: cordova and ionic http://ionicframework.com/docs/v2/getting-started/installation/
+3) for ionic2: git
