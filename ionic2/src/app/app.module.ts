@@ -15,7 +15,7 @@ import { JsonHttpGateway } from '../services/json-http-service';
 import { AuthenticationService } from '../services/authentication/authentication-service';
 import { AuthenticationApi } from '../services/authentication/authentication-api';
 
-class MyAuthConfig extends CustomConfig {
+export class MyAuthConfig extends CustomConfig {
     defaultHeaders = {'Content-Type': 'application/json'};
     providers = {
       google: { clientId: CONFIG.GOOGLE_CLIENT_ID },

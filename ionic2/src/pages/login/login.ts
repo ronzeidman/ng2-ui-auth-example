@@ -11,16 +11,15 @@ import {Signup} from '../signup/signup';
 })
 export class Login {
   loginForm: FormGroup;
-  email: FormControl;
+  username: FormControl;
   password: FormControl;
-  errorMessage;
 
   ionViewDidLoad() {
-    this.email = this.fb.control('', Validators.compose([Validators.required]));
+    this.username = this.fb.control('', Validators.compose([Validators.required]));
     this.password = this.fb.control('', Validators.compose([Validators.required]));
 
     this.loginForm = this.fb.group({
-      email: this.email,
+      username: this.username,
       password: this.password
     });
   }

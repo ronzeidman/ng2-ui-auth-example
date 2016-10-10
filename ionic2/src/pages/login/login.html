@@ -15,10 +15,10 @@
 
 <ion-content padding>
     <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
-      <ion-item [ngClass]="{'has-error': email.hasError('validateEmail') && email.dirty}" >
-        <ion-input type="text" placeholder="Email" formControlName="email" ></ion-input>
+      <ion-item [ngClass]="{'has-error': username.hasError('required') && username.dirty}" >
+        <ion-input type="text" placeholder="User Name" formControlName="username" ></ion-input>
       </ion-item>
-      <div *ngIf="email.hasError('validateEmail') && email.dirty" class="error-box">* Please enter a valid email</div>
+      <div *ngIf="username.hasError('required') && username.dirty" class="error-box">* Please enter a valid email</div>
 
       <ion-item>
         <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
