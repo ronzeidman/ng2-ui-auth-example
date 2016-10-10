@@ -26,3 +26,5 @@ Few dependencies that may require more attention:
 2) for ionic2: cordova and ionic http://ionicframework.com/docs/v2/getting-started/installation/
 
 3) for ionic2: git
+
+#### Note: If you are using an IDE or a "smart" editor you'll probably want to open each folder seperately since not many editors/IDEs understand multiple "package.json"s and "tsconfig.json"s 
