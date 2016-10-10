@@ -1,8 +1,14 @@
+import {hashSync} from 'bcrypt';
 import {IDBUser} from './interfaces';
+import {config} from './config';
 /**
  * Created by Ron on 02/10/2016.
  */
-const users = new Map<string, IDBUser>();
+const users = new Map<string, IDBUser>([['test', {
+    username: 'test',
+    hash: hashSync('testtest', config.auth.SALT_ROUNDS)
+}]]);
+
 const googleToUsername = new Map<string, string>();
 
 export const dbSaveUser = async (user: IDBUser) => {

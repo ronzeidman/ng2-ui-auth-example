@@ -15,14 +15,18 @@
     "server:build": "cd ./server && npm run build",
     "server:prod:run": "cd ./server && npm run prod:run",
     "server:install": "cd ./server && npm i",
-    "watch": "concurrently \"npm run server:watch\" \"npm run client:watch\"",
+    "ionic:install": "cd ./ionic2 && npm i",
+    "ionic:watch": "cd ./ionic2 && npm run watch",
+    "ionic:serve": "cd ./ionic2 && ionic serve",
+    "postinstall": "npm run client:install && npm run server:install && npm run ionic:install",
+    "watch": "concurrently \"npm run server:watch\" \"npm run client:watch\" \"npm run ionic:watch\"",
     "build:dev": "npm run client:dev && npm run server:build",
     "build:prod": "npm run client:prod && npm run server:build",
     "prod": "npm run server:prod:run",
     "dev": "npm run server:dev:run",
-    "postinstall": "npm run client:install && npm run server:install",
     "full:dev": "npm i && npm run build:dev && npm run dev",
-    "full:prod": "npm i && npm run build:prod && npm run prod"
+    "full:prod": "npm i && npm run build:prod && npm run prod",
+    "full:ionic": "npm i && npm run server:build && concurrently \"npm run server:dev:run\" \"npm run ionic:serve\""
   },
   "repository": {
     "type": "git",

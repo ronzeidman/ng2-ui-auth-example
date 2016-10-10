@@ -5,6 +5,7 @@ import * as jwtMiddleware from 'express-jwt';
 import {authRoutes} from './auth';
 import {config} from './config';
 import * as morgan from 'morgan';
+import * as cors from 'cors';
 /**
  * Created by Ron on 02/10/2016.
  */
@@ -17,6 +18,10 @@ const publicDir = process.argv[2] || path.join(__dirname, '..', '..', 'client');
 
 
 app
+    .use(
+        //for ionic login
+        cors({ origin: 'http://localhost:8100' })
+    )
     .use(morgan('dev'))
     .use(bodyParser.json())
     .get('/index.dev.html', (req, res) =>
