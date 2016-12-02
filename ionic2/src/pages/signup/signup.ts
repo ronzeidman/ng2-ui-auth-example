@@ -8,7 +8,7 @@ import { Login } from '../login/login';
 })
 export class Signup {
 
-  // TODO: Implement this page, Very similar to the login page, just use AuthenticationService.singup
+  // TODO: Implement this page, Very similar to the login page, just use AuthenticationService.signup
   // TODO: You can also use the 'authenticate' method for fb/google logins.
   constructor(public navCtrl: NavController) {}
 
