@@ -1,7 +1,7 @@
 import {Router} from '@angular/router';
 import {AuthService} from 'ng2-ui-auth';
 import {ILoginData} from '../interfaces';
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {ErrorHandleService} from '../services/error-handle.service';
 import {FormBuilder, FormControl, Validators, FormGroup} from '@angular/forms';
 import {FormHelperService} from '../services/form-helper.service';
@@ -16,12 +16,14 @@ import {FormHelperService} from '../services/form-helper.service';
 export class LoginComponent implements OnInit {
     form: FormGroup;
 
-    constructor(private auth: AuthService,
+    constructor(private vcr: ViewContainerRef,
+                private auth: AuthService,
                 private router: Router,
                 private eh: ErrorHandleService,
                 private fb: FormBuilder,
                 public fh: FormHelperService) {
 
+      eh.setRootViewContainerRef(vcr);
     }
 
     ngOnInit() {
@@ -39,8 +41,8 @@ export class LoginComponent implements OnInit {
             });
     }
 
-    loginWithGoogle() {
-        this.auth.authenticate('google')
+    externalLogin(provider: string) {
+        this.auth.authenticate(provider)
             .subscribe({
                 error: (err: any) => this.eh.handleError(err),
                 complete: () => this.router.navigateByUrl('main')

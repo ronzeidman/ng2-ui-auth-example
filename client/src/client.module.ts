@@ -1,4 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgModule} from '@angular/core';
 import {Ng2UiAuthModule} from 'ng2-ui-auth';
 import {HttpModule} from '@angular/http';
@@ -9,7 +10,7 @@ import {MainComponent} from './components/main.component';
 import {LoginComponent} from './components/login.component';
 import {SignupComponent} from './components/signup.component';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
-import {ToastModule} from 'ng2-toastr';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import {ErrorHandleService} from './services/error-handle.service';
 import {FormHelperService} from './services/form-helper.service';
 /**
@@ -25,6 +26,7 @@ import {FormHelperService} from './services/form-helper.service';
         routing,
         Ng2UiAuthModule.forRoot(MyAuthConfig),
         ToastModule.forRoot(),
+        BrowserAnimationsModule,
     ],
     providers: [
         ErrorHandleService,
