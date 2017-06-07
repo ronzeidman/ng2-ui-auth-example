@@ -1,5 +1,5 @@
 import {JwtHttp, AuthService} from 'ng2-ui-auth';
-import {OnInit, Component} from '@angular/core';
+import {OnInit, Component, ViewContainerRef} from '@angular/core';
 import {ITokenUser} from '../interfaces';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
@@ -18,11 +18,12 @@ export class MainComponent implements OnInit {
     expiration: Date;
     secret: Observable<string>;
 
-    constructor(private http: JwtHttp,
+    constructor(private vcr: ViewContainerRef,
+                private http: JwtHttp,
                 private auth: AuthService,
                 private router: Router,
                 private eh: ErrorHandleService) {
-
+      eh.setRootViewContainerRef(vcr);
     }
 
     ngOnInit() {

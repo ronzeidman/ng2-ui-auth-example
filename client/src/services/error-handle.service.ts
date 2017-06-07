@@ -1,12 +1,16 @@
 /**
  * Created by ronze on 10/9/2016.
  */
-import {Injectable} from '@angular/core';
-import {ToastsManager} from 'ng2-toastr';
+import {Injectable, ViewContainerRef} from '@angular/core';
+import {ToastsManager} from 'ng2-toastr/ng2-toastr';
 import {Response} from '@angular/http';
 @Injectable()
 export class ErrorHandleService {
     constructor(private toastr: ToastsManager) {
+    }
+
+    setRootViewContainerRef(vcr: ViewContainerRef) {
+      this.toastr.setRootViewContainerRef(vcr);
     }
 
     handleError(err: any) {

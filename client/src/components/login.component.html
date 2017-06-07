@@ -3,7 +3,7 @@
         <div class="page-header">
             <h1>Login</h1>
         </div>
-        <form class="col-lg-12" [formGroup]="form" (ngSubmit)="login(form.value)">
+        <form ngForm class="col-lg-12" [formGroup]="form" (ngSubmit)="login(form.value)">
             <div class="form-group"
                  [ngClass]="{'has-error':fh.hasError(form, 'username')}"
             >
@@ -32,7 +32,7 @@
         </form>
         <p class="col-lg-12"></p>
         <p class="col-lg-12">
-            <button type="button" class="btn btn-default" (click)="loginWithGoogle()">Login with google</button>
+            <button type="button" class="btn btn-default" (click)="externalLogin('google')">Login with google</button>
             Don't have an account? <a [routerLink]="'/signup'">Sign up</a>
         </p>
     </div>
