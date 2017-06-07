@@ -17,7 +17,8 @@
     "rootDir": "./src",
     "sourceMap": true,
     "target": "es5",
-    "outDir": "dist/"
+    "outDir": "dist/",
+    "skipLibCheck": true
   },
   "files": ["src/bootstrap"]
 }
