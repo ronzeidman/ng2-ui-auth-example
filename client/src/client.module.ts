@@ -23,8 +23,8 @@ import {FormHelperService} from './services/form-helper.service';
         FormsModule,
         ReactiveFormsModule,
         routing,
-        Ng2UiAuthModule.getWithConfig(MyAuthConfig),
-        ToastModule
+        Ng2UiAuthModule.forRoot(MyAuthConfig),
+        ToastModule.forRoot(),
     ],
     providers: [
         ErrorHandleService,

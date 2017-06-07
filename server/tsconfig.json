@@ -6,7 +6,8 @@
     "outDir": "dist",
     "noImplicitAny": true,
     "noImplicitReturns": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "skipLibCheck": true
   },
   "files": ["src/server"]
 }

@@ -35,15 +35,15 @@ module.exports = {
                 test: /\.css$/,
                 loaders: [
                     'to-string',
-                    'css'
+                    'css-loader'
                 ],
                 include: [path.resolve(__dirname, 'src', 'components')]
             },
             {
                 test: /\.css$/,
                 loaders: [
-                    'style',
-                    'css'
+                    'style-loader',
+                    'css-loader'
                 ],
                 exclude: [path.resolve(__dirname, 'src', 'components')]
             },
@@ -56,7 +56,7 @@ module.exports = {
             },
             {
                 test: /\.html/,
-                loader: 'html',
+                loader: 'html-loader',
                 options: {
                     minimize: true,
                     removeAttributeQuotes: false,

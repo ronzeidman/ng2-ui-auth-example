@@ -38,7 +38,7 @@ export class MyAuthConfig extends CustomConfig {
   ],
   imports: [
     IonicModule.forRoot(MyApp),
-    Ng2UiAuthModule.getWithConfig(MyAuthConfig),
+    Ng2UiAuthModule.forRoot(MyAuthConfig),
 
   ],
   bootstrap: [IonicApp],
