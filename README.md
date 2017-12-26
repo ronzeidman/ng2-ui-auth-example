@@ -2,8 +2,11 @@
 
 angular2:
 ```
-1) replace '<replace me>' tags from /server/src/config.ts and /client/src/config.ts with your google secret and client id 
-2) npm run full:dev
+1) git clone https://github.com/ronzeidman/ng2-ui-auth-example.git
+2) cd ng2-ui-auth-example
+3) npm i
+4) replace '<replace me>' tags from /server/src/config.ts and /client/src/config.ts with your google secret and client id 
+5) npm start
 3) start your browser at localhost:3000
 ```
 
