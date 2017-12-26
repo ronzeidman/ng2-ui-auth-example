@@ -13,7 +13,7 @@
     "ionic:install": "cd ./ionic2 && npm i",
     "ionic:watch": "cd ./ionic2 && npm run watch",
     "ionic:serve": "cd ./ionic2 && ionic serve",
-    "postinstall": "npm run client:install && npm run server:install && npm run ionic:install",
+    "postinstall": "npm run client:install && npm run server:install && npm run ionic:install"
   },
   "repository": {
     "type": "git",
