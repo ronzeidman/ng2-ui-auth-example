@@ -1,12 +1,12 @@
-import * as Bluebird from 'bluebird';
-import * as jwt from 'jsonwebtoken';
-import {VerifyOptions} from 'jsonwebtoken';
+import { Request, Response } from 'express';
 import * as joi from 'joi';
-import {ValidationError, ValidationOptions} from 'joi';
-import * as bcrypt from 'bcrypt';
-import {Request, Response} from 'express';
-import {IDBUser, ITokenUser} from './interfaces';
-import {config} from './config';
+import { ValidationError, ValidationOptions } from 'joi';
+import * as jwt from 'jsonwebtoken';
+import { VerifyOptions } from 'jsonwebtoken';
+
+import { config } from './config';
+import { IDBUser, ITokenUser } from './interfaces';
+
 /**
  * Created by Ron on 03/10/2016.
  */
@@ -23,17 +23,17 @@ export type RequestWithUser = Request & { user: IDBUser };
 /* jsonwebtoken */
 export const sendTokenAsync = (response: Response, tokenInfo: ITokenUser) => {
     return new Promise((resolve, reject) => {
-        jwt.sign(tokenInfo, config.auth.TOKEN_SECRET, {expiresIn: '15m'}, (err, access_token) => {
+        jwt.sign(tokenInfo, config.auth.TOKEN_SECRET, { expiresIn: '15m' }, (err, access_token) => {
             if (err) {
                 reject(err);
                 return;
             }
-            resolve(response.send({access_token}));
+            resolve(response.send({ access_token }));
         });
     });
 };
 
-export const verifyTokenAsync = (token: string, secretOrPublicKey: string | Buffer, options?: VerifyOptions) =>  {
+export const verifyTokenAsync = (token: string, secretOrPublicKey: string | Buffer, options?: VerifyOptions) => {
     return new Promise<any>((resolve, reject) => {
         jwt.verify(token, secretOrPublicKey, options || {}, (err, decoded) => {
             if (err) {
@@ -64,14 +64,3 @@ export const loginValidationSchema = {
     username: joi.string().max(20).min(3).required(),
     password: joi.string().max(50).min(6).required()
 };
-
-/* bcrypt */
-export const encryptAsync = (password: string) =>
-    Bluebird.promisify(bcrypt.hash, {context: bcrypt})(password, config.auth.SALT_ROUNDS);
-
-export const compareAsync = Bluebird.promisify(bcrypt.compare, {context: bcrypt});
-
-
-
-
-

@@ -1,62 +1,47 @@
-import {hashSync} from 'bcrypt';
-import {IDBUser} from './interfaces';
-import {config} from './config';
+import { hashSync } from 'bcrypt';
+import { IDBUser } from './interfaces';
+import { config } from './config';
 /**
  * Created by Ron on 02/10/2016.
  */
-const users = new Map<string, IDBUser>([['test', {
+let users: IDBUser[] = [{
     username: 'test',
     hash: hashSync('testtest', config.auth.SALT_ROUNDS)
-}]]);
-
-const googleToUsername = new Map<string, string>();
+}];
 
 export const dbSaveUser = async (user: IDBUser) => {
-    if (users.has(user.username)) {
+    if (users.some(existing => existing.username === user.username)) {
         throw new Error('Username already exists');
     }
-    users.set(user.username, Object.assign({}, user));
-    if (user.google) {
-        googleToUsername.set(user.google, user.username);
-    }
-    return Object.assign({}, user);
+    users = [...users, { ...user }];
+    return { ...user };
 };
 
 export const dbGetUser = async (username: string) => {
-    const user = users.get(username);
-    if (!user) {
-        return null;
-    }
-    return Object.assign({}, user);
+    const user = users.find(user => user.username === username);
+    return user ? { ...user } : null;
 };
 
-//todo see https://github.com/Microsoft/TypeScript/issues/11233
-export const dbUpdateUser = async (username: string, userUpdate: any /* subset IDBUser */) => {
-    const user = await dbGetUser(username);
-    if (!user) {
+export const dbUpdateUser = async (username: string, userUpdate: Partial<IDBUser>) => {
+    const existingUser = await dbGetUser(username);
+    if (!existingUser) {
         throw new Error('User was not found');
     }
-    Object.assign(user, userUpdate);
-    users.set(user.username, user);
-    if (user.google) {
-        googleToUsername.set(user.google, user.username);
-    }
-    return user;
+    const user = { ...existingUser, ...userUpdate };
+    users = [...users.filter(user => user.username !== username), user];
+    return { ...user };
 };
 
 
-export const dbGetUserByGoogle = async (google: string) => {
-    const username = googleToUsername.get(google);
-    if (!username) {
-        throw new Error("User doesn't exists");
-    }
-    const user = users.get(username);
+export const dbGetUserByField = async (field: keyof IDBUser, value: any) => {
+    const user = users.find(existing => existing[field] === value);
     if (!user) {
         throw new Error("User doesn't exists");
     }
-    return Object.assign({}, user);
+    return { ...user };
 };
 
-export const dbGoogleIdExists = async (google: string) => {
-    return googleToUsername.has(google);
+export const dbUserExists = async (field: keyof IDBUser, value: any) => {
+    const index = users.findIndex(existing => existing[field] === value);
+    return index !== -1;
 };

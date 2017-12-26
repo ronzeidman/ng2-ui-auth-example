@@ -18,6 +18,27 @@ export interface IGoogleProfile {
     error?: Error;
 }
 
+export interface IFacebookProfile {
+    id: string;
+    email: string;
+    first_name: string;
+    last_name: string;
+    link: string;
+    name: string;
+    picture: {
+        data: {
+            is_silhouette: boolean;
+            url: string;
+        }
+    };
+}
+
+export interface ITwitterProfile{
+    id: string;
+    email: string;
+    name: string;
+    profile_image_url: string;
+}
 
 export interface ILoginData {
     username: string;
@@ -35,5 +56,7 @@ export interface ITokenUser {
 
 export interface IDBUser extends ITokenUser {
     google?: string;
+    facebook?: string;
+    twitter?: string;
     hash?: string;
 }

@@ -5,28 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "client:ngc": "cd ./client && npm run ngc",
-    "client:dev": "cd ./client && npm run dev",
-    "client:watch": "cd ./client && npm run watch",
-    "client:prod": "cd ./client && npm run prod",
+    "start": "concurrently \"npm run server:start\" \"npm run client:start\"",
+    "client:start": "cd ./client && npm start",
     "client:install": "cd ./client && npm i",
-    "server:dev:run": "cd ./server && npm run dev:run",
-    "server:watch": "cd ./server && npm run watch",
-    "server:build": "cd ./server && npm run build",
-    "server:prod:run": "cd ./server && npm run prod:run",
+    "server:start": "cd ./server && npm start",
     "server:install": "cd ./server && npm i",
     "ionic:install": "cd ./ionic2 && npm i",
     "ionic:watch": "cd ./ionic2 && npm run watch",
     "ionic:serve": "cd ./ionic2 && ionic serve",
     "postinstall": "npm run client:install && npm run server:install && npm run ionic:install",
-    "watch": "concurrently \"npm run server:watch\" \"npm run client:watch\" \"npm run ionic:watch\"",
-    "build:dev": "npm run client:dev && npm run server:build",
-    "build:prod": "npm run client:prod && npm run server:build",
-    "prod": "npm run server:prod:run",
-    "dev": "npm run server:dev:run",
-    "full:dev": "npm i && npm run build:dev && npm run dev",
-    "full:prod": "npm i && npm run build:prod && npm run prod",
-    "full:ionic": "npm i && npm run server:build && concurrently \"npm run server:dev:run\" \"npm run ionic:serve\""
   },
   "repository": {
     "type": "git",
@@ -39,6 +26,6 @@
   },
   "homepage": "https://github.com/ronzeidman/ng2-ui-auth-example#readme",
   "devDependencies": {
-    "concurrently": "^3.1.0"
+    "concurrently": "^3.5.1"
   }
 }
