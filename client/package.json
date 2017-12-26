@@ -23,7 +23,7 @@
     "@angular/router": "^5.0.0",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
-    "ng2-ui-auth": "file:../../ng2-ui-auth/dist",
+    "ng2-ui-auth": "^8.0.1",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"
   },
