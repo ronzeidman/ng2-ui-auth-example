@@ -1,15 +1,15 @@
 <div class="container">
   <div class="page-header">
-      <h1>Main</h1>
+    <h1>Main</h1>
   </div>
   <div class="col-lg-12">
-      <h2>Username: {{user.username}}</h2>
-      <img *ngIf="user.picture" [src]="user.picture">
-      <h3>{{user.displayName}}</h3>
-      <h4>{{expiration | date:'medium'}}</h4>
-      <p>Secret: {{secret | async}}</p>
-      <button type="button" class="btn btn-default" (click)="logout()">Logout</button>
-      <button type="button" class="btn btn-default" (click)="refresh()">Refresh</button>
-      <button type="button" class="btn btn-default" (click)="link()">Link</button>
+    <h2>Username: {{user.username}}</h2>
+    <img *ngIf="user.picture" [src]="user.picture">
+    <h3>{{user.displayName}}</h3>
+    <h4>{{expiration | date:'medium'}}</h4>
+    <p>Secret: {{secret | async}}</p>
+    <button type="button" class="btn btn-default" (click)="logout()">Logout</button>
+    <button type="button" class="btn btn-default" (click)="refresh()">Refresh</button>
+    <button type="button" class="btn btn-default" (click)="link()">Link</button>
   </div>
 </div>

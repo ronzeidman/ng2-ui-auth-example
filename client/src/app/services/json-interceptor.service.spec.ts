@@ -1,15 +1,12 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
 import { JsonInterceptorService } from './json-interceptor.service';
 
 describe('JsonInterceptorService', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [JsonInterceptorService]
-    });
-  });
+  beforeEach(() => TestBed.configureTestingModule({}));
 
-  it('should be created', inject([JsonInterceptorService], (service: JsonInterceptorService) => {
+  it('should be created', () => {
+    const service: JsonInterceptorService = TestBed.get(JsonInterceptorService);
     expect(service).toBeTruthy();
-  }));
+  });
 });

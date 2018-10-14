@@ -1,5 +1,8 @@
 {
   "/auth": {
     "target": "http://localhost:3000/"
+  },
+  "/secret": {
+    "target": "http://localhost:3000/"
   }
 }

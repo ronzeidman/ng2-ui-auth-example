@@ -3,23 +3,14 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { Ng2UiAuthModule } from 'ng2-ui-auth';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import { SignupComponent } from './components/signup/signup.component';
-import { FormHelperService } from './services/form-helper.service';
-import { JsonInterceptorService } from './services/json-interceptor.service';
-
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MainComponent,
-    LoginComponent,
-    SignupComponent
-  ],
+  declarations: [AppComponent, LoginComponent, MainComponent, SignupComponent],
   imports: [
     AppRoutingModule,
     BrowserModule,
@@ -28,12 +19,19 @@ import { JsonInterceptorService } from './services/json-interceptor.service';
     Ng2UiAuthModule.forRoot({
       providers: {
         google: {
-          clientId: 'REPLACE ME',
+          clientId: 'CHANGE ME'
+        },
+        facebook: {
+          clientId: 'CHANGE ME'
+        },
+        twitter: {
+          clientId: 'CHANGE ME',
+          redirectUri: 'http://localhost:4200'
         }
       }
     })
   ],
-  providers: [JsonInterceptorService, FormHelperService],
+  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
