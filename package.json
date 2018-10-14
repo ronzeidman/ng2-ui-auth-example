@@ -10,10 +10,7 @@
     "client:install": "cd ./client && npm i",
     "server:start": "cd ./server && npm start",
     "server:install": "cd ./server && npm i",
-    "ionic:install": "cd ./ionic2 && npm i",
-    "ionic:watch": "cd ./ionic2 && npm run watch",
-    "ionic:serve": "cd ./ionic2 && ionic serve",
-    "postinstall": "npm run client:install && npm run server:install && npm run ionic:install"
+    "postinstall": "npm run client:install && npm run server:install"
   },
   "repository": {
     "type": "git",
@@ -26,6 +23,6 @@
   },
   "homepage": "https://github.com/ronzeidman/ng2-ui-auth-example#readme",
   "devDependencies": {
-    "concurrently": "^3.5.1"
+    "concurrently": "^4.0.1"
   }
 }
